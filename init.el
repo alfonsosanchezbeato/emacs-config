@@ -26,6 +26,16 @@
 ;;;
 ;; Remove annoying unity shorcuts:
 ;; From CompizConfig, unity plugin, remove "Alt" as key to show HUD
+;;;
+;; Using rtags: https://github.com/Andersbakken/rtags/wiki/Usage
+;; Download deb source package from disco, adapt and create the debs.
+;; apt install rtags_2.21-3_amd64.deb elpa-rtags_2.21-3_all.deb
+;; systemctl start --user rdm
+;; # To generate compile_commands.json:
+;; cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
+;; # Generate database:
+;; rtags-rc -J
+;; Then you can start using rtags command
 
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 2) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
@@ -116,40 +126,57 @@
 
 ; CEDET
 ; Disable... too slow for our C++ :(
-(semantic-mode 1)
+;(semantic-mode 1)
 (global-ede-mode 1)            ; Enable the Project management system
 
 ;; Semantic
 ; Disable... too slow for our C++ :(
-(global-semantic-idle-scheduler-mode)
+;(global-semantic-idle-scheduler-mode)
 ; Not really necessary with auto-complete on, probably
-(global-semantic-idle-completions-mode)
+;(global-semantic-idle-completions-mode)
 ; Show declaration at bottom
-(global-semantic-idle-summary-mode)
-(global-semantic-decoration-mode)
-(global-semantic-highlight-func-mode)
+;(global-semantic-idle-summary-mode)
+;(global-semantic-decoration-mode)
+;(global-semantic-highlight-func-mode)
 ; Underline in red if text cannot be parsed: annoying
 ;(global-semantic-show-unmatched-syntax-mode)
 ; on by default:
-(global-semanticdb-minor-mode)
+;(global-semanticdb-minor-mode)
 ; Highlight all appareances of symbol near point
-(global-semantic-idle-local-symbol-highlight-mode)
+;(global-semantic-idle-local-symbol-highlight-mode)
 ; Go back to last edited tag
-(global-semantic-mru-bookmark-mode)
+;(global-semantic-mru-bookmark-mode)
 
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
+;(semanticdb-enable-gnu-global-databases 'c-mode)
+;(semanticdb-enable-gnu-global-databases 'c++-mode)
+
+; start rdm/rtags
+(rtags-start-process-unless-running)
+; Enbla RTAGS bindings
+(rtags-enable-standard-keybindings)
+; Enable completion with company + rtags
+(require 'package)
+(package-initialize)
+(require 'rtags)
+(require 'company)
+(setq rtags-completions-enabled t)
+(push 'company-rtags company-backends)
+(global-company-mode)
+(define-key c-mode-base-map (kbd "<C-tab>") (function company-complete))
 
 ; Key to use semantic to jump to tag
-(global-set-key (kbd "<f5>") 'semantic-ia-fast-jump)
+;(global-set-key (kbd "<f5>") 'semantic-ia-fast-jump)
 ; Switch between prototype and implementation
-(global-set-key (kbd "<f6>") 'semantic-analyze-proto-impl-toggle)
+;(global-set-key (kbd "<f6>") 'semantic-analyze-proto-impl-toggle)
 (global-set-key (kbd "s-z") 'avy-goto-word-or-subword-1)
 (global-set-key (kbd "s-x") 'ace-window)
 
-(defun my-semantic-hook ()
-  (imenu-add-to-menubar "TAGS"))
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
+(global-set-key (kbd "<f5>") 'rtags-print-symbol-info)
+(global-set-key (kbd "<f6>") 'rtags-symbol-type)
+
+;; (defun my-semantic-hook ()
+;;   (imenu-add-to-menubar "TAGS"))
+;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
 ; This hook is needed to enforce the c-file-style local variable if defined in
 ; ede-cpp-root-project. See
@@ -190,7 +217,7 @@
 ; Commands to force parsing of a tree (easier to use is lk-parse-curdir-c, from
 ; project root).
 ; Otherwise semantic parses only files that you opened previously.
-(load "~/.emacs.d/semantic-parse.el")
+;(load "~/.emacs.d/semantic-parse.el")
 
 ; Show full path in title
 (setq frame-title-format
@@ -203,11 +230,11 @@
 
 ;; CC-mode (view line numbers and add semantic source to auto-complete)
 (add-hook 'c-mode-common-hook '(lambda () (linum-mode 1)))
-(add-hook 'c-mode-common-hook '(lambda ()
-        (setq ac-sources (append '(ac-source-semantic) ac-sources))
-))
+;(add-hook 'c-mode-common-hook '(lambda ()
+;        (setq ac-sources (append '(ac-source-semantic) ac-sources))
+;))
 ; Seems that adding system includes must be done via hooks
-(add-hook 'c-mode-common-hook '(lambda () (semantic-add-system-include "/usr/include/glib-2.0")))
+;(add-hook 'c-mode-common-hook '(lambda () (semantic-add-system-include "/usr/include/glib-2.0")))
 
 ; Avoid conversion of tabs to spaces when deleting
 ;(setq backward-delete-char-untabify-method nil)
@@ -319,7 +346,7 @@
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (matlab-mode yaml-mode sr-speedbar smart-tabs-mode projectile-speedbar helm-projectile go-mode ggtags flx-ido f dtrt-indent diff-hl color-theme-solarized cmake-mode bm auto-complete ag ace-window)))
+    (company-rtags ac-rtags matlab-mode yaml-mode sr-speedbar smart-tabs-mode projectile-speedbar helm-projectile go-mode ggtags flx-ido f dtrt-indent diff-hl color-theme-solarized cmake-mode bm auto-complete ag ace-window)))
  '(safe-local-variable-values
    (quote
     ((eval c-set-offset

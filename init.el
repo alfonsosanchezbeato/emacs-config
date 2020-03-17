@@ -28,6 +28,7 @@
 ;; From CompizConfig, unity plugin, remove "Alt" as key to show HUD
 ;;;
 ;; Using rtags: https://github.com/Andersbakken/rtags/wiki/Usage
+;;   and https://raw.githubusercontent.com/philippe-grenet/exordium/master/modules/init-rtags.el
 ;; Download deb source package from disco, adapt and create the debs.
 ;; apt install rtags_2.21-3_amd64.deb elpa-rtags_2.21-3_all.deb
 ;; systemctl start --user rdm
@@ -36,6 +37,13 @@
 ;; # Generate database:
 ;; rtags-rc -J
 ;; Then you can start using rtags command
+;;
+;;;
+;; elisp tutorials
+;;   http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html
+;;   https://www.reddit.com/r/emacs/comments/3aslwu/what_are_the_best_resources_for_learning_elisp/
+;; Run linter:
+;;   /usr/bin/emacs -Q --batch -l ~/.emacs.d/elpa/elisp-lint-20200102.1550/elisp-lint.el -f elisp-lint-files-batch roman-numerals.el
 
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 2) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
@@ -74,6 +82,8 @@
 ;(setq bm-highlight-style 'bm-highlight-only-fringe)
 
 (show-paren-mode 1)
+; emacs 26: see https://emacs.stackexchange.com/questions/278/how-do-i-display-line-numbers-in-emacs-not-in-the-mode-line
+(global-linum-mode 1)
 
 ;(require 'uniquify) ; bundled with GNU emacs 23.2.1 or before. On in 24.4
 ; Append directory name to the beginning for buffers with the same name
@@ -346,7 +356,7 @@
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (company-rtags ac-rtags matlab-mode yaml-mode sr-speedbar smart-tabs-mode projectile-speedbar helm-projectile go-mode ggtags flx-ido f dtrt-indent diff-hl color-theme-solarized cmake-mode bm auto-complete ag ace-window)))
+    (magit elisp-refs elisp-lint company-rtags ac-rtags matlab-mode yaml-mode sr-speedbar smart-tabs-mode projectile-speedbar helm-projectile go-mode ggtags flx-ido f dtrt-indent diff-hl color-theme-solarized cmake-mode bm auto-complete ag ace-window)))
  '(safe-local-variable-values
    (quote
     ((eval c-set-offset

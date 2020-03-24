@@ -190,10 +190,10 @@
 ; This hook is needed to enforce the c-file-style local variable if defined in
 ; ede-cpp-root-project. See
 ;http://sourceforge.net/p/cedet/mailman/message/28529831/
-(defmethod ede-set-project-variables :after ((this ede-cpp-root-project)
-                                              &optional buffer)
-  (when (and c-file-style (eq major-mode 'c-mode))
-    (c-set-style c-file-style)))
+;; (defmethod ede-set-project-variables :after ((this ede-cpp-root-project)
+;;                                               &optional buffer)
+;;   (when (and c-file-style (eq major-mode 'c-mode))
+;;     (c-set-style c-file-style)))
 
 ; Specify project for semantic searches. Of the two options, ede is better
 ; because you can indicate folders to search for include files.
@@ -202,23 +202,23 @@
 ; EDE also parses Makefile.am files automatically, but for some projects it
 ; works and for other it does not do it very well.
 ;(setq-default semanticdb-project-roots (list "/mnt/data/telephony/git_abeato/ofono"))
-(ede-cpp-root-project "OFONO_GITHUB"
-		      :file "~/src/ofono/github/Makefile.am"
-		      :include-path '( "/include" "/src" "/gril" "/drivers/rilmodem" "/plugins" )
-		      :local-variables '((backward-delete-char-untabify-method . nil)
-					 (indent-tabs-mode . t)
-					 (c-syntactic-indentation . nil)
-					 (c-file-style . "linux"))
-		      )
+;; (ede-cpp-root-project "OFONO_GITHUB"
+;; 		      :file "~/src/ofono/github/Makefile.am"
+;; 		      :include-path '( "/include" "/src" "/gril" "/drivers/rilmodem" "/plugins" )
+;; 		      :local-variables '((backward-delete-char-untabify-method . nil)
+;; 					 (indent-tabs-mode . t)
+;; 					 (c-syntactic-indentation . nil)
+;; 					 (c-file-style . "linux"))
+;; 		      )
 
-(ede-cpp-root-project "OFONO_UPSTREAM"
-		      :file "~/src/ofono/upstream/Makefile.am"
-		      :include-path '( "/include" "/src" "/gril" "/drivers/rilmodem" "/plugins" )
-		      :local-variables '((backward-delete-char-untabify-method . nil)
-					 (indent-tabs-mode . t)
-					 (c-syntactic-indentation . nil)
-					 (c-file-style . "linux"))
-		      )
+;; (ede-cpp-root-project "OFONO_UPSTREAM"
+;; 		      :file "~/src/ofono/upstream/Makefile.am"
+;; 		      :include-path '( "/include" "/src" "/gril" "/drivers/rilmodem" "/plugins" )
+;; 		      :local-variables '((backward-delete-char-untabify-method . nil)
+;; 					 (indent-tabs-mode . t)
+;; 					 (c-syntactic-indentation . nil)
+;; 					 (c-file-style . "linux"))
+;; 		      )
 
 ; C style for NM
 (load "~/.emacs.d/networkmanager-style.el")

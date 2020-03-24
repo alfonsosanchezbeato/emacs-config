@@ -85,7 +85,7 @@
 
 (show-paren-mode 1)
 ; emacs 26: see https://emacs.stackexchange.com/questions/278/how-do-i-display-line-numbers-in-emacs-not-in-the-mode-line
-(global-linum-mode 1)
+;(global-linum-mode 1)
 
 ;(require 'uniquify) ; bundled with GNU emacs 23.2.1 or before. On in 24.4
 ; Append directory name to the beginning for buffers with the same name

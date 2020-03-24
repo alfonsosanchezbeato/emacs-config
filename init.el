@@ -386,7 +386,7 @@
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (magit elisp-refs elisp-lint company-rtags ac-rtags matlab-mode yaml-mode sr-speedbar smart-tabs-mode projectile-speedbar helm-projectile go-mode ggtags flx-ido f dtrt-indent diff-hl color-theme-solarized cmake-mode bm auto-complete ag ace-window)))
+    (org magit elisp-refs elisp-lint company-rtags ac-rtags matlab-mode yaml-mode sr-speedbar smart-tabs-mode projectile-speedbar helm-projectile go-mode ggtags flx-ido f dtrt-indent diff-hl color-theme-solarized cmake-mode bm auto-complete ag ace-window)))
  '(safe-local-variable-values
    (quote
     ((eval c-set-offset

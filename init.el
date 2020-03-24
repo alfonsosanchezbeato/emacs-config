@@ -354,6 +354,25 @@
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
 
+; Automatically update default-directory by looking at the prompt
+; https://snarfed.org/why_i_run_shells_inside_emacs
+; the regex stores the path in regex group 1: the input is the prompt line.
+; Example of how it works:
+;(string-match "^.*[^ ]+:\\(.*\\)[$#]" "abeato@numancia:~/src/build-envs$ sdzzxvc zxcv")
+;(match-string 1 "abeato@numancia:~/src/build-envs$ sdzzxvc zxcv")
+(defun my-dirtrack-mode ()
+  "Add to shell-mode-hook to use dirtrack mode in my shell buffers."
+  (shell-dirtrack-mode 0)
+  (set-variable 'dirtrack-list '("^.*[^ ]+:\\(.*\\)[$#]" 1 nil))
+  (dirtrack-mode 1))
+(add-hook 'shell-mode-hook 'my-dirtrack-mode)
+; bash completion in shell: https://github.com/szermatt/emacs-bash-completion
+(autoload 'bash-completion-dynamic-complete
+  "~/.emacs.d/bash-completion.el"
+  "BASH completion hook")
+(add-hook 'shell-dynamic-complete-functions
+          'bash-completion-dynamic-complete)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

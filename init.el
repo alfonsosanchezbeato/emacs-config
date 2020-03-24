@@ -99,9 +99,6 @@
 ; fix in 24.4. sr-speedbar affected too.
 ;(setq global-auto-revert-non-file-buffers t)
 
-; See lines on left part of the screen -> do better per mode
-;(global-linum-mode 1)
-
 ; Save files that have been opened
 (desktop-save-mode 1)
 

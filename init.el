@@ -336,6 +336,13 @@
 
 (defun disable-tabs () (interactive) (setq indent-tabs-mode nil))
 
+(setq org-startup-truncated nil)
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done "time")
+(setq org-support-shift-select t)
+
 ; To display ansi colors in buffer
 (require 'ansi-color)
 (defun display-ansi-colors ()

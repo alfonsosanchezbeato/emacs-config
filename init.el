@@ -343,6 +343,11 @@
 (setq org-log-done "time")
 (setq org-support-shift-select t)
 
+; Do not break long lines in term/ansi-term
+(setq term-suppress-hard-newline t)
+; max size for term/ansi-term buffer
+(setq term-buffer-maximum-size 10000)
+
 ; To display ansi colors in buffer
 (require 'ansi-color)
 (defun display-ansi-colors ()

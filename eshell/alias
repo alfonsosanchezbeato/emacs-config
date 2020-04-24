@@ -1,3 +1,7 @@
+alias ff find-file $1
+alias g++ g++ -Wall -Wextra $*
+alias gcc gcc -Wall -Wextra $*
+alias ip ip --color $*
 alias a cd ..
 alias aa cd ../..
 alias aaa cd ../../..
@@ -8,3 +12,6 @@ alias aaaaaaa cd ../../../../../../..
 alias aaaaaaaa cd ../../../../../../../..
 alias aaaaaaaaa cd ../../../../../../../../..
 alias aaaaaaaaaa cd ../../../../../../../../../..
+alias ps ps -ww $*
+alias la ls -A $*
+alias sudo eshell/sudo $*

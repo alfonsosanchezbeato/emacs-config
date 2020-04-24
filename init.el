@@ -44,6 +44,12 @@
 ;;   https://www.reddit.com/r/emacs/comments/3aslwu/what_are_the_best_resources_for_learning_elisp/
 ;; Run linter:
 ;;   /usr/bin/emacs -Q --batch -l ~/.emacs.d/elpa/elisp-lint-20200102.1550/elisp-lint.el -f elisp-lint-files-batch roman-numerals.el
+;;;
+;; eshell tricks
+;;    write beginning, then UP for searching history:
+;;    https://stackoverflow.com/questions/13009908/eshell-search-history
+;;    use buit-ins like 'cd' or 'cp' with TRAMP 'address' like;
+;;    cd /ssh:admin@192.168.1.56:
 
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 2) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
@@ -263,6 +269,20 @@
 
 ;;; No tabs in shell mode
 (add-hook 'sh-mode-hook (lambda () (setq indent-tabs-mode nil)))
+
+;; eshell customizations (see custom-set-variables below):
+;; customized eshell-prompt-regexp (so it works when # is part of the prompt,
+;; which happens when using TRAMP and you ssh to a non-usual port (like
+;; '/ssh:alfonsosanchezbeato@localhost#8022:/home/alfonsosanchezbeato $ ')
+;; Example of ssh+sudo:
+;; find-file '/ssh:alfonsosanchezbeato@localhost#8022|sudo:localhost#8022:/home/alfonsosanchezbeato/ccc'
+;; after doing it once for one file, you do not need the ssh part anymore
+;; See https://ipfs-sec.stackexchange.cloudflare-ipfs.com/emacs/A/question/5608.html
+(require 'em-tramp) ; to load eshell’s sudo
+;; Change some key bindings in eshell
+(add-hook 'eshell-mode-hook (lambda ()
+                              (local-set-key (kbd "<up>") 'previous-line)
+                              (local-set-key (kbd "<down>") 'next-line)))
 
 ;;; Guess indentation
 ;;; NOTE this is known to have issues in some cases, for instance shell scripts

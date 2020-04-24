@@ -80,6 +80,13 @@
 
 (global-set-key (kbd "C-,") 'previous-buffer)
 (global-set-key (kbd "C-.") 'next-buffer)
+(global-set-key (kbd "C-d") 'delete-backward-char)
+;; It is not possible to use C-i due to the links it has with TAB
+;; (auto-completion is C-i and some times TAB is that too). So if
+;; this is enabled you end up deleting words when pressing TAB.
+;(global-set-key (kbd "C-i") 'backward-kill-word)
+;(global-set-key (kbd "C-2") 'kill-region)
+(global-set-key (kbd "C-ñ") 'backward-kill-word)
 
 ;;; Visual studio style bookmarks (bm.el)
 (global-set-key (kbd "<C-f2>") 'bm-toggle)
@@ -184,7 +191,8 @@
 ; Switch between prototype and implementation
 ;(global-set-key (kbd "<f6>") 'semantic-analyze-proto-impl-toggle)
 (global-set-key (kbd "s-z") 'avy-goto-word-or-subword-1)
-(global-set-key (kbd "s-x") 'ace-window)
+(global-set-key (kbd "s-<") 'ace-window)
+(global-set-key (kbd "s-x") 'other-window)
 
 (global-set-key (kbd "<f5>") 'rtags-print-symbol-info)
 (global-set-key (kbd "<f6>") 'rtags-symbol-type)
@@ -356,10 +364,14 @@
 
 (defun disable-tabs () (interactive) (setq indent-tabs-mode nil))
 
+(require 'dired)
+(define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+
 (setq org-startup-truncated nil)
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
+(define-key org-mode-map (kbd "C-,") nil)
 (setq org-log-done "time")
 (setq org-support-shift-select t)
 
@@ -404,8 +416,13 @@
  '(custom-safe-themes
    (quote
     ("3d5307e5d6eb221ce17b0c952aa4cf65dbb3fa4a360e12a71e03aab78e0176c5" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "e4e97731f52a5237f37ceb2423cb327778c7d3af7dc831788473d4a76bcc9760" default)))
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(eshell-history-size 5000)
+ '(eshell-prompt-regexp "^[^$
+]* [#$] ")
  '(font-use-system-font t)
  '(frame-background-mode (quote dark))
+ '(make-backup-files nil)
  '(package-selected-packages
    (quote
     (org magit elisp-refs elisp-lint company-rtags ac-rtags matlab-mode yaml-mode sr-speedbar smart-tabs-mode projectile-speedbar helm-projectile go-mode ggtags flx-ido f dtrt-indent diff-hl color-theme-solarized cmake-mode bm auto-complete ag ace-window)))
@@ -454,3 +471,4 @@
 ;(load-theme 'zenburn t)
 (load-theme 'solarized t)
 ;(load-theme 'tango-dark t)
+(put 'dired-find-alternate-file 'disabled nil)

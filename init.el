@@ -99,6 +99,8 @@
 (show-paren-mode 1)
 ; emacs 26: see https://emacs.stackexchange.com/questions/278/how-do-i-display-line-numbers-in-emacs-not-in-the-mode-line
 ;(global-linum-mode 1)
+;(global-display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;(require 'uniquify) ; bundled with GNU emacs 23.2.1 or before. On in 24.4
 ; Append directory name to the beginning for buffers with the same name
@@ -252,7 +254,7 @@
 (add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
 
 ;; CC-mode (view line numbers and add semantic source to auto-complete)
-(add-hook 'c-mode-common-hook '(lambda () (linum-mode 1)))
+;(add-hook 'c-mode-common-hook '(lambda () (linum-mode 1)))
 ;(add-hook 'c-mode-common-hook '(lambda ()
 ;        (setq ac-sources (append '(ac-source-semantic) ac-sources))
 ;))
@@ -301,7 +303,7 @@
 
 ;;; golang settings
 (setenv "GOPATH" "/home/abeato/go")
-(add-hook 'go-mode-hook '(lambda () (linum-mode 1)))
+;(add-hook 'go-mode-hook '(lambda () (linum-mode 1)))
 ;(add-hook 'before-save-hook 'gofmt-before-save)
 (defun my-go-mode-hook ()
   ; Call Gofmt before saving
@@ -313,10 +315,10 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ;; python mode settings
-(add-hook 'python-mode-hook '(lambda () (linum-mode 1)))
+;(add-hook 'python-mode-hook '(lambda () (linum-mode 1)))
 
 ;; shell mode settings
-(add-hook 'sh-mode-hook '(lambda () (linum-mode 1)))
+;(add-hook 'sh-mode-hook '(lambda () (linum-mode 1)))
 
 ;; Autocomplete
 (require 'auto-complete-config)

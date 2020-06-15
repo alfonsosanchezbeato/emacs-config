@@ -293,6 +293,8 @@
 (add-hook 'eshell-mode-hook (lambda ()
                               (local-set-key (kbd "<up>") 'previous-line)
                               (local-set-key (kbd "<down>") 'next-line)))
+;; To avoid "WARNING: terminal is not fully functional" for some commands
+(setenv "PAGER" "cat")
 
 ;;; Guess indentation
 ;;; NOTE this is known to have issues in some cases, for instance shell scripts

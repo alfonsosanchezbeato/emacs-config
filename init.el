@@ -392,6 +392,11 @@
 (define-key org-mode-map (kbd "C-,") nil)
 (setq org-log-done "time")
 (setq org-support-shift-select t)
+(org-babel-do-load-languages 'org-babel-load-languages
+    '(
+        (shell . t)
+    )
+)
 
 ; Do not break long lines in term/ansi-term
 (setq term-suppress-hard-newline t)

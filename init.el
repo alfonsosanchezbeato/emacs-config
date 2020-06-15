@@ -476,3 +476,4 @@
 (load-theme 'solarized t)
 ;(load-theme 'tango-dark t)
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'downcase-region 'disabled nil)

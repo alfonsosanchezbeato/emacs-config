@@ -409,16 +409,26 @@
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
 
+; We do not want to set the color of the prompt from emacs, but from PS1
+; this works, but I need to fix dirtrack mode with the new PS1 before activating...
+;; (add-hook 'shell-mode-hook
+;;       (lambda ()
+;;         (face-remap-set-base 'comint-highlight-prompt :inherit nil)))
+
 ; Automatically update default-directory by looking at the prompt
 ; https://snarfed.org/why_i_run_shells_inside_emacs
 ; the regex stores the path in regex group 1: the input is the prompt line.
-; Example of how it works:
-;(string-match "^.*[^ ]+:\\(.*\\)[$#]" "abeato@numancia:~/src/build-envs$ sdzzxvc zxcv")
-;(match-string 1 "abeato@numancia:~/src/build-envs$ sdzzxvc zxcv")
+;; Example of how it works:
+;;(setq var "abeato@numancia:~/src/build-envs$ sdzzxvc zxcv")
+;;(string-match "^.*[^ ]+:\\(.*\\)[$#]" var)
+;;(match-string 1 var)
 (defun my-dirtrack-mode ()
   "Add to shell-mode-hook to use dirtrack mode in my shell buffers."
   (shell-dirtrack-mode 0)
   (set-variable 'dirtrack-list '("^.*[^ ]+:\\(.*\\)[$#]" 1 nil))
+  ;; Adapt to detect escape sequence now that we use colors
+  ;;(set-variable 'dirtrack-list '("^.*[^ ]+:\\(.*\\)\e" 1 nil))
+  ;;(face-remap-set-base 'comint-highlight-prompt :inherit nil
   (dirtrack-mode 1))
 (add-hook 'shell-mode-hook 'my-dirtrack-mode)
 ; bash completion in shell: https://github.com/szermatt/emacs-bash-completion

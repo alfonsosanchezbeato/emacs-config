@@ -188,6 +188,20 @@
 (global-company-mode)
 (define-key c-mode-base-map (kbd "<C-tab>") (function company-complete))
 
+; cofigured dired-x
+(add-hook 'dired-load-hook
+          (lambda ()
+            (load "dired-x")
+            ;; Set dired-x global variables here.  For example:
+            ;; (setq dired-guess-shell-gnutar "gtar")
+            ;; (setq dired-x-hands-off-my-keys nil)
+            ))
+(add-hook 'dired-mode-hook
+          (lambda ()
+            ;; Set dired-x buffer-local variables here.  For example:
+            ;; (dired-omit-mode 1)
+            ))
+
 ; Key to use semantic to jump to tag
 ;(global-set-key (kbd "<f5>") 'semantic-ia-fast-jump)
 ; Switch between prototype and implementation

@@ -55,7 +55,9 @@
 ;; Now add a line like the following for every directory where you want the
 ;; "NetworkManager" style to be the default
 
-(dir-locals-set-directory-class "~/src/network-manager/" 'nm)
+;(dir-locals-set-directory-class "~/src/network-manager/" 'nm)
+; Note that neesd to be the root of the repo, apparently
+(dir-locals-set-directory-class "~/src/network-manager/upstream/" 'nm)
 ; (dir-locals-set-directory-class "/home/danw/gnome/network-manager-applet/" 'nm)
 
 (provide 'networkmanager-style)

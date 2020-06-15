@@ -149,7 +149,7 @@
 ; CEDET
 ; Disable... too slow for our C++ :(
 ;(semantic-mode 1)
-(global-ede-mode 1)            ; Enable the Project management system
+;(global-ede-mode 1)            ; Enable the Project management system
 
 ;; Semantic
 ; Disable... too slow for our C++ :(

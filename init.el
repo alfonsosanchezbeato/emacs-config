@@ -448,10 +448,17 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-    (org magit elisp-refs elisp-lint company-rtags ac-rtags matlab-mode yaml-mode sr-speedbar smart-tabs-mode projectile-speedbar helm-projectile go-mode ggtags flx-ido f dtrt-indent diff-hl color-theme-solarized cmake-mode bm auto-complete ag ace-window)))
+    (magit elisp-refs ac-rtags yaml-mode sr-speedbar smart-tabs-mode go-mode ggtags flx-ido dtrt-indent color-theme-solarized auto-complete ag ace-window)))
  '(safe-local-variable-values
    (quote
     ((eval c-set-offset
+           (quote innamespace)
+           0)
+     (eval when
+           (fboundp
+            (quote c-toggle-comment-style))
+           (c-toggle-comment-style 1))
+     (eval c-set-offset
            (quote arglist-close)
            0)
      (eval c-set-offset

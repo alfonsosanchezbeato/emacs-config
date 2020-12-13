@@ -295,8 +295,10 @@
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
               (ggtags-mode 1))))
 
-;;; No tabs in shell mode
-(add-hook 'sh-mode-hook (lambda () (setq indent-tabs-mode nil)))
+;;; No tabs and no company mode in shell mode
+(add-hook 'shell-mode-hook (lambda ()
+                             (setq indent-tabs-mode nil)
+                             (company-mode -1)))
 
 ;; eshell customizations (see custom-set-variables below):
 ;; customized eshell-prompt-regexp (so it works when # is part of the prompt,
@@ -336,9 +338,6 @@
 
 ;; python mode settings
 ;(add-hook 'python-mode-hook '(lambda () (linum-mode 1)))
-
-;; shell mode settings
-;(add-hook 'sh-mode-hook '(lambda () (linum-mode 1)))
 
 ;; Autocomplete
 (require 'auto-complete-config)

@@ -126,13 +126,16 @@
 
 ;;; Emacs is not a package manager, and here we load its package manager!
 (require 'package)
-(dolist (source '(("marmalade" . "http://marmalade-repo.org/packages/")
-                  ;;("elpa" . "http://tromey.com/elpa/") ; Not maintained?
-                  ;; TODO: Maybe, use this after emacs24 is released
-                  ;; (development versions of packages)
-                  ("melpa" . "http://melpa.milkbox.net/packages/")
+;; Marmalade not working lately...
+;; (dolist (source '(("marmalade" . "http://marmalade-repo.org/packages/")
+;;                   ;;("elpa" . "http://tromey.com/elpa/") ; Not maintained?
+;;                   ;; TODO: Maybe, use this after emacs24 is released
+;;                   ;; (development versions of packages)
+;;                   ("melpa" . "http://melpa.milkbox.net/packages/")
+;;                   ))
+(dolist (package-sources '(("melpa" . "https://melpa.org/packages/")
                   ))
-(add-to-list 'package-archives source t))
+(add-to-list 'package-archives package-sources t))
 (package-initialize)
 
 ;;; Apparently we can use dowloaded packages only after package-initialize

@@ -209,9 +209,10 @@
 ;(global-set-key (kbd "<f5>") 'semantic-ia-fast-jump)
 ; Switch between prototype and implementation
 ;(global-set-key (kbd "<f6>") 'semantic-analyze-proto-impl-toggle)
-(global-set-key (kbd "s-z") 'avy-goto-word-or-subword-1)
+;(global-set-key (kbd "s-z") 'avy-goto-word-or-subword-1)
 (global-set-key (kbd "s-<") 'ace-window)
-(global-set-key (kbd "s-x") 'other-window)
+(global-set-key (kbd "s-z") 'other-window)
+;(global-set-key (kbd "s-x") 'god-local-mode)
 
 (global-set-key (kbd "<f5>") 'rtags-print-symbol-info)
 (global-set-key (kbd "<f6>") 'rtags-symbol-type)

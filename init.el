@@ -400,7 +400,10 @@
     '(
         (shell . t)
     )
-)
+    )
+(setq org-src-fontify-natively t)
+
+(setq ispell-dictionary "american")
 
 ; Do not break long lines in term/ansi-term
 (setq term-suppress-hard-newline t)

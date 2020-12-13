@@ -478,10 +478,17 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-    (magit elisp-refs ac-rtags yaml-mode sr-speedbar smart-tabs-mode go-mode ggtags flx-ido dtrt-indent color-theme-solarized auto-complete ag ace-window)))
+    (ido-vertical-mode god-mode magit elisp-refs ac-rtags yaml-mode sr-speedbar smart-tabs-mode go-mode ggtags flx-ido dtrt-indent color-theme-solarized auto-complete ag ace-window)))
  '(safe-local-variable-values
    (quote
-    ((eval c-set-offset
+    ((eval progn
+           (c-set-offset
+            (quote innamespace)
+            (quote 0))
+           (c-set-offset
+            (quote inline-open)
+            (quote 0)))
+     (eval c-set-offset
            (quote innamespace)
            0)
      (eval when
@@ -520,6 +527,7 @@
  '(ediff-fine-diff-B ((t (:background "dark green"))))
  '(ediff-odd-diff-A ((t (:background "saddle brown" :foreground "dark gray"))))
  '(ediff-odd-diff-B ((t (:background "dark red" :foreground "dark gray"))))
+ '(org-block ((t (:foreground "slate gray"))))
  '(sh-heredoc ((t (:foreground "medium sea green" :weight normal))))
  '(whitespace-space ((t (:background "sea green" :foreground "#073642"))))
  '(whitespace-tab ((t (:background "sea green" :foreground "#073642")))))

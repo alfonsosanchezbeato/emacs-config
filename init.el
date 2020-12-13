@@ -140,7 +140,7 @@
 
 ;;; Apparently we can use dowloaded packages only after package-initialize
 
-;(require 'ido-vertical-mode)
+(require 'ido-vertical-mode)
 ; Looks like flx-ido functionality is already in emacs distro
 ;(require 'flx-ido)
 (ido-mode 1)
@@ -149,7 +149,7 @@
 ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
 ;(setq ido-use-faces nil)
-;(ido-vertical-mode 1)
+(ido-vertical-mode 1)
 
 ; CEDET
 ; Disable... too slow for our C++ :(

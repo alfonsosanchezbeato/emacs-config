@@ -416,6 +416,19 @@
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
 
+;; Longer shell history
+(setq history-length 10000)
+;; http://xenodium.com/more-reusable-emacs-shell-command-history/
+;(use-package savehist
+;  :custom
+;  (savehist-file "~/.emacs.d/savehist")
+;  (savehist-save-minibuffer-history t)
+;  (history-length 10000)
+;  (savehist-additional-variables
+;   '(shell-command-history))
+;  :config
+;  (savehist-mode +1))
+
 ; We do not want to set the color of the prompt from emacs, but from PS1
 ; this works, but I need to fix dirtrack mode with the new PS1 before activating...
 ;; (add-hook 'shell-mode-hook

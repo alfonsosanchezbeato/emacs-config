@@ -80,13 +80,14 @@
 
 (global-set-key (kbd "C-,") 'previous-buffer)
 (global-set-key (kbd "C-.") 'next-buffer)
-(global-set-key (kbd "C-d") 'delete-backward-char)
+;;(global-set-key (kbd "C-d") 'delete-backward-char)
 ;; It is not possible to use C-i due to the links it has with TAB
 ;; (auto-completion is C-i and some times TAB is that too). So if
 ;; this is enabled you end up deleting words when pressing TAB.
 ;(global-set-key (kbd "C-i") 'backward-kill-word)
 ;(global-set-key (kbd "C-2") 'kill-region)
 (global-set-key (kbd "C-ñ") 'backward-kill-word)
+(global-set-key (kbd "M-ñ") 'delete-backward-char)
 
 ;;; Visual studio style bookmarks (bm.el)
 (global-set-key (kbd "<C-f2>") 'bm-toggle)

@@ -323,6 +323,12 @@
 ; Remove dtrt-indent messages in echo area
 ;(setq dtrt-indent-verbosity 0)
 
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(global-set-key (kbd "<menu>") 'smex)
+
 ;;; golang settings
 (setenv "GOPATH" "/home/abeato/go")
 ;(add-hook 'go-mode-hook '(lambda () (linum-mode 1)))
@@ -477,7 +483,7 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-    (ido-vertical-mode god-mode magit elisp-refs ac-rtags yaml-mode sr-speedbar smart-tabs-mode go-mode ggtags flx-ido dtrt-indent color-theme-solarized auto-complete ag ace-window)))
+    (ripgrep smex ido-vertical-mode god-mode magit elisp-refs ac-rtags yaml-mode sr-speedbar smart-tabs-mode go-mode ggtags flx-ido dtrt-indent color-theme-solarized auto-complete ag ace-window)))
  '(safe-local-variable-values
    (quote
     ((eval progn

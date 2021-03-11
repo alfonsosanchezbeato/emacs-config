@@ -309,11 +309,17 @@
 ;; find-file '/ssh:alfonsosanchezbeato@localhost#8022|sudo:localhost#8022:/home/alfonsosanchezbeato/ccc'
 ;; after doing it once for one file, you do not need the ssh part anymore
 ;; See https://ipfs-sec.stackexchange.cloudflare-ipfs.com/emacs/A/question/5608.html
-(require 'em-tramp) ; to load eshell’s sudo
+;; To load eshell’s sudo (so it does not ask all the time for password).
+;; However, things get tricky when you want to sudo an internal eshell command,
+;; that does not work (i.e. 'sudo mkdir'). Use * to use external command in that case,
+;; like 'sudo *mkdir'.
+(require 'em-tramp)
 ;; Change some key bindings in eshell
 (add-hook 'eshell-mode-hook (lambda ()
                               (local-set-key (kbd "<up>") 'previous-line)
                               (local-set-key (kbd "<down>") 'next-line)))
+;; Make TAB work in the usual way instead of cycling
+(setq eshell-cmpl-cycle-completions nil)
 ;; To avoid "WARNING: terminal is not fully functional" for some commands
 (setenv "PAGER" "cat")
 

@@ -493,7 +493,8 @@
     (ripgrep smex ido-vertical-mode god-mode magit elisp-refs ac-rtags yaml-mode sr-speedbar smart-tabs-mode go-mode ggtags flx-ido dtrt-indent color-theme-solarized auto-complete ag ace-window)))
  '(safe-local-variable-values
    (quote
-    ((eval progn
+    ((c-default-style . "linux")
+     (eval progn
            (c-set-offset
             (quote innamespace)
             (quote 0))

@@ -321,6 +321,17 @@
                               (company-mode -1)))
 ;; Make TAB work in the usual way instead of cycling
 (setq eshell-cmpl-cycle-completions nil)
+;; Change color of prompt if error on last command
+(defun with-face (str &rest face-plist)
+    (propertize str 'face face-plist))
+(setq eshell-prompt-function
+   (lambda ()
+     (concat (with-face (abbreviate-file-name (eshell/pwd))
+                        :foreground "green4")
+             (with-face (if (= (user-uid) 0) " #" " $")
+                        :foreground (if (= eshell-last-command-status 0)
+                                        "green" "orange red"))
+             " ")))
 ;; To avoid "WARNING: terminal is not fully functional" for some commands
 (setenv "PAGER" "cat")
 

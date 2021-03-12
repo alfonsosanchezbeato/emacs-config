@@ -314,10 +314,11 @@
 ;; that does not work (i.e. 'sudo mkdir'). Use * to use external command in that case,
 ;; like 'sudo *mkdir'.
 (require 'em-tramp)
-;; Change some key bindings in eshell
+;; Change some key bindings in eshell, no company mode
 (add-hook 'eshell-mode-hook (lambda ()
                               (local-set-key (kbd "<up>") 'previous-line)
-                              (local-set-key (kbd "<down>") 'next-line)))
+                              (local-set-key (kbd "<down>") 'next-line)
+                              (company-mode -1)))
 ;; Make TAB work in the usual way instead of cycling
 (setq eshell-cmpl-cycle-completions nil)
 ;; To avoid "WARNING: terminal is not fully functional" for some commands

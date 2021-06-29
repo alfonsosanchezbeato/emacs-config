@@ -260,8 +260,9 @@
 ;; 					 (c-file-style . "linux"))
 ;; 		      )
 
-; C style for NM
-(load "~/.emacs.d/networkmanager-style.el")
+;; C style for NM
+;; They changed it completely, re-visit when I have to do some new NM stuff
+;(load "~/.emacs.d/networkmanager-style.el")
 
 ; Commands to force parsing of a tree (easier to use is lk-parse-curdir-c, from
 ; project root).

@@ -359,6 +359,9 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "<menu>") 'smex)
+;; Switch these definitions (althoudh C-x k was actually kill-buffer)
+(global-set-key (kbd "C-x C-x") 'kill-this-buffer)
+;;(global-set-key (kbd "C-x k") 'exchange-point-and-mark)
 
 ;;; golang settings
 (setenv "GOPATH" "/home/abeato/go")

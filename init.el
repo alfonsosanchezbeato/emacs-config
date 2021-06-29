@@ -53,8 +53,8 @@
 
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 2) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
-(setq scroll-step            1
-      scroll-conservatively  10000)
+;(setq scroll-step            1
+;      scroll-conservatively  10000)
 (setq auto-window-vscroll nil)
 (column-number-mode)
 ; Remove selection when we write
@@ -138,6 +138,11 @@
                   ))
 (add-to-list 'package-archives package-sources t))
 (package-initialize)
+
+; Better than scroll-step
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+(setq smooth-scroll-margin 5)
 
 ;;; Apparently we can use dowloaded packages only after package-initialize
 

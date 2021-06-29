@@ -324,6 +324,9 @@
 (add-hook 'eshell-mode-hook (lambda ()
                               (local-set-key (kbd "<up>") 'previous-line)
                               (local-set-key (kbd "<down>") 'next-line)
+                              (local-set-key (kbd "M-r") 'counsel-esh-history)
+                              (setenv "TERM" "dumb-emacs-ansi")
+                              (setenv "COLORTERM" "1")
                               (company-mode -1)))
 ;; Make TAB work in the usual way instead of cycling
 (setq eshell-cmpl-cycle-completions nil)
@@ -338,6 +341,9 @@
                         :foreground (if (= eshell-last-command-status 0)
                                         "green" "orange red"))
              " ")))
+(setenv "EDITOR" "emacsclient")
+(setenv "VISUAL" "emacsclient")
+(setenv "GIT_EDITOR" "emacsclient")
 ;; To avoid "WARNING: terminal is not fully functional" for some commands
 (setenv "PAGER" "cat")
 

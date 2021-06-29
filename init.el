@@ -517,7 +517,7 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-    (ripgrep smex ido-vertical-mode god-mode magit elisp-refs ac-rtags yaml-mode sr-speedbar smart-tabs-mode go-mode ggtags flx-ido dtrt-indent color-theme-solarized auto-complete ag ace-window)))
+    (smooth-scrolling dpkg-dev-el ivy-rich counsel ivy swiper ripgrep smex ido-vertical-mode magit elisp-refs ac-rtags yaml-mode sr-speedbar smart-tabs-mode go-mode ggtags flx-ido dtrt-indent color-theme-solarized auto-complete ag ace-window)))
  '(safe-local-variable-values
    (quote
     ((c-default-style . "linux")

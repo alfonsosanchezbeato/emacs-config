@@ -380,12 +380,12 @@
 ;(add-hook 'python-mode-hook '(lambda () (linum-mode 1)))
 
 ;; Autocomplete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories (expand-file-name
-             "~/.emacs.d/elpa/auto-complete-1.4.20110207/dict"))
-(setq ac-comphist-file (expand-file-name
-             "~/.emacs.d/ac-comphist.dat"))
-(ac-config-default)
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories (expand-file-name
+;;              "~/.emacs.d/elpa/auto-complete-1.4.20110207/dict"))
+;; (setq ac-comphist-file (expand-file-name
+;;              "~/.emacs.d/ac-comphist.dat"))
+;; (ac-config-default)
 
 ;(projectile-global-mode)
 (projectile-mode +1)

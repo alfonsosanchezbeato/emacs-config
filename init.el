@@ -157,6 +157,15 @@
 ;(setq ido-use-faces nil)
 (ido-vertical-mode 1)
 
+;; Ivy
+;; (require 'ivy)
+;; (require 'counsel)
+;; (ivy-mode 1)
+;; (require 'ivy-rich)
+;; (ivy-rich-mode 1)
+;; swiper
+
+
 ; CEDET
 ; Disable... too slow for our C++ :(
 ;(semantic-mode 1)
